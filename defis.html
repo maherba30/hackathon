@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Défis Quotidiens pour la Santé Mentale</title>
+  <link rel="stylesheet" href="styledefi.css">
+</head>
+<body>
+  <div class="challenges-container">
+    <header>
+      <h1>Défis Quotidiens pour Améliorer la Santé Mentale</h1>
+      <p>Accomplissez un défi chaque jour pour renforcer votre bien-être mental.</p>
+    </header>
+
+    <div id="challenges-list">
+      <div class="challenge">
+        <p>🧘‍♀️ Faites 5 minutes de méditation ou de respiration profonde.</p>
+        <button class="complete-btn">Marquer comme Accompli</button>
+      </div>
+      <div class="challenge">
+        <p>📚 Lisez 10 pages d'un livre que vous aimez.</p>
+        <button class="complete-btn">Marquer comme Accompli</button>
+      </div>
+      <div class="challenge">
+        <p>🌿 Faites une promenade de 10 minutes en plein air.</p>
+        <button class="complete-btn">Marquer comme Accompli</button>
+      </div>
+      <div class="challenge">
+        <p>💧 Buvez un grand verre d'eau pour rester hydraté.</p>
+        <button class="complete-btn">Marquer comme Accompli</button>
+      </div>
+      <div class="challenge">
+        <p>🎨 Prenez 10 minutes pour dessiner ou faire de l'art.</p>
+        <button class="complete-btn">Marquer comme Accompli</button>
+      </div>
+    </div>
+
+    <div id="message"></div>
+  </div>
+  <boutton onclick="location.href='page_acceille.html'">retour</boutton>
+
+  <script >
+    // Sélectionner tous les boutons "Marquer comme Accompli"
+const completeButtons = document.querySelectorAll('.complete-btn');
+const messageDiv = document.getElementById("message");
+
+// Fonction pour marquer un défi comme accompli
+function markAsComplete(event) {
+  const button = event.target;
+  const challenge = button.closest('.challenge');
+  challenge.style.backgroundColor = "#c8e6c9"; // Changer la couleur du défi terminé
+  button.textContent = "Défi Accompli ✔️";
+  button.disabled = true; // Désactiver le bouton après la soumission
+
+  messageDiv.textContent = "Félicitations ! Vous avez accompli un défi pour aujourd'hui.";
+  messageDiv.style.color = "green";
+}
+
+// Ajouter des écouteurs d'événements aux boutons
+completeButtons.forEach(button => {
+  button.addEventListener("click", markAsComplete);
+});
+
+  </script>
+</body>
+</html>

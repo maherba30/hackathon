@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Journal Intime</title>
+  <link rel="stylesheet" href="stylejournal.css">
+</head>
+<body>
+  <div class="journal-container">
+    <header>
+      <h1>Mon Journal Intime</h1>
+      <p>Écrivez vos pensées et vos sentiments chaque jour.</p>
+    </header>
+    
+    <div class="entry-container">
+      <label for="journal-entry">Écrivez ici :</label>
+      <textarea id="journal-entry" rows="10" placeholder="Votre journal intime..."></textarea>
+    </div>
+
+    <div class="buttons">
+      <button id="save-btn">Sauvegarder</button>
+      <button id="load-btn">Charger</button>
+      <button id="clear-btn">Effacer</button>
+    </div>
+
+    <div id="message"></div>
+  </div>
+  <boutton onclick="location.href='page_acceille.html'">retour</boutton>
+
+  <script>
+    // Sélectionner les éléments du DOM
+const journalEntry = document.getElementById("journal-entry");
+const saveButton = document.getElementById("save-btn");
+const loadButton = document.getElementById("load-btn");
+const clearButton = document.getElementById("clear-btn");
+const messageDiv = document.getElementById("message");
+
+// Fonction pour sauvegarder l'entrée dans le localStorage
+function saveEntry() {
+  const entryText = journalEntry.value.trim();
+  if (entryText === "") {
+    messageDiv.textContent = "Veuillez écrire quelque chose avant de sauvegarder.";
+    messageDiv.style.color = "red";
+    return;
+  }
+  localStorage.setItem("journal-entry", entryText);
+  messageDiv.textContent = "Votre entrée a été sauvegardée.";
+  messageDiv.style.color = "green";
+  journalEntry.value = ""; // Réinitialiser le champ après la sauvegarde
+}
+
+// Fonction pour charger l'entrée sauvegardée
+function loadEntry() {
+  const savedEntry = localStorage.getItem("journal-entry");
+  if (savedEntry) {
+    journalEntry.value = savedEntry;
+    messageDiv.textContent = "Entrée chargée avec succès.";
+    messageDiv.style.color = "green";
+  } else {
+    messageDiv.textContent = "Aucune entrée trouvée.";
+    messageDiv.style.color = "orange";
+  }
+}
+
+// Fonction pour effacer le contenu du journal
+function clearEntry() {
+  journalEntry.value = "";
+  localStorage.removeItem("journal-entry");
+  messageDiv.textContent = "Journal effacé.";
+  messageDiv.style.color = "blue";
+}
+
+// Ajouter les écouteurs d'événements
+saveButton.addEventListener("click", saveEntry);
+loadButton.addEventListener("click", loadEntry);
+clearButton.addEventListener("click", clearEntry);
+
+  </script>
+</body>
+</html>

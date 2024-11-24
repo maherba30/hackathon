@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacter l’Administrateur</title>
+  <link rel="stylesheet" href="stylecontact.css">
+</head>
+<body>
+  <div class="contact-container">
+    <h1>Contacter l’Administrateur</h1>
+    <p>Utilisez ce formulaire pour signaler un problème ou poser une question à l’administrateur de la faculté.</p>
+    <form id="contact-form">
+      
+      
+      
+      
+      
+      <label for="problem">Décrivez votre problème :</label>
+      <textarea id="problem" name="problem" placeholder="Expliquez votre problème ici..." rows="5" required></textarea>
+      
+      <button type="submit" id="submit-btn">Envoyer</button>
+    </form>
+    <div id="response-message"></div>
+  </div>
+  <boutton onclick="location.href='autres.html'">retour</boutton>
+  <script >
+    const form = document.getElementById("contact-form");
+const responseMessage = document.getElementById("response-message");
+
+form.addEventListener("submit", function (event) {
+  event.preventDefault(); // Empêche le rechargement de la page
+
+  // Récupérer les données du formulaire
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const problem = document.getElementById("problem").value;
+
+  // Simuler un envoi de données (ici, console.log)
+  console.log("Nom :", name);
+  console.log("E-mail :", email);
+  console.log("Problème :", problem);
+
+  // Afficher un message de confirmation
+  responseMessage.textContent =
+    "Votre message a été envoyé avec succès. L'administrateur vous contactera bientôt.";
+  responseMessage.style.color = "green";
+
+  // Réinitialiser le formulaire
+  form.reset();
+});
+
+  </script>
+</body>
+</html>

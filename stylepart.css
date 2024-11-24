@@ -1,0 +1,114 @@
+/* Style global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  /* En-tête */
+  header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  header h1 {
+    font-size: 36px;
+  }
+  
+  header p {
+    font-size: 18px;
+  }
+  
+  /* Section des offres d'emplois */
+  #offers {
+    background-color: #fff;
+    padding: 30px 0;
+  }
+  
+  #offers h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .job-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .job-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    width: 30%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .job-item h3 {
+    color: #4CAF50;
+  }
+  
+  .job-item button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .job-item button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Formulaire de recherche */
+  #search {
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  #search input {
+    padding: 10px;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+  }
+  
+  #search button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #search button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Pied de page */
+  footer {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+  }
+  

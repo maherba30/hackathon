@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Santé Mentale</title>
+  <img src="quiz.png">
+  <link rel="stylesheet" href="stylequiz.css">
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Santé Mentale : Auto-évaluation</h1>
+    <p>Répondez honnêtement aux questions pour obtenir un aperçu de votre bien-être mental.</p>
+    <div id="quiz">
+      <!-- Questions seront injectées ici -->
+    </div>
+    <button id="submit">Soumettre</button>
+    <boutton onclick="location.href='page_acceille.html'">retour</boutton>
+    <div id="result"></div>
+  </div>
+  
+    <script >
+        const quizData = [
+  {
+    question: "Vous vous sentez souvent stressé(e) ou dépassé(e) ?",
+    options: ["Jamais", "Rarement", "Parfois", "Souvent", "Toujours"],
+    score: [0, 1, 2, 3, 4]
+  },
+  {
+    question: "Avez-vous du mal à vous concentrer sur vos études ?",
+    options: ["Jamais", "Rarement", "Parfois", "Souvent", "Toujours"],
+    score: [0, 1, 2, 3, 4]
+  },
+  {
+    question: "Vous sentez-vous souvent isolé(e) ou seul(e) ?",
+    options: ["Jamais", "Rarement", "Parfois", "Souvent", "Toujours"],
+    score: [0, 1, 2, 3, 4]
+  },
+  {
+    question: "Vous dormez bien et suffisamment ?",
+    options: ["Toujours", "Souvent", "Parfois", "Rarement", "Jamais"],
+    score: [0, 1, 2, 3, 4] // Inversé pour cette question
+  }
+];
+
+const quizContainer = document.getElementById("quiz");
+const submitButton = document.getElementById("submit");
+const resultContainer = document.getElementById("result");
+
+function loadQuiz() {
+  quizData.forEach((item, index) => {
+    const quizItem = document.createElement("div");
+    quizItem.classList.add("quiz-item");
+    quizItem.innerHTML = `
+      <p>${item.question}</p>
+      ${item.options
+        .map(
+          (option, i) =>
+            `<label><input type="radio" name="question${index}" value="${item.score[i]}"> ${option}</label><br>`
+        )
+        .join("")}
+    `;
+    quizContainer.appendChild(quizItem);
+  });
+}
+
+function calculateScore() {
+  let score = 0;
+  let unanswered = 0;
+
+  quizData.forEach((_, index) => {
+    const options = document.getElementsByName(`question${index}`);
+    let answered = false;
+
+    options.forEach(option => {
+      if (option.checked) {
+        score += parseInt(option.value);
+        answered = true;
+      }
+    });
+
+    if (!answered) unanswered++;
+  });
+
+  if (unanswered > 0) {
+    resultContainer.innerHTML = `Veuillez répondre à toutes les questions.`;
+  } else {
+    let message = "";
+    if (score <= 5) {
+      message = "Votre santé mentale semble bonne. Continuez à prendre soin de vous !";
+    } else if (score <= 10) {
+      message = "Vous semblez rencontrer un peu de stress. Essayez de faire des pauses.";
+    } else {
+      message = "Votre santé mentale pourrait nécessiter de l'attention. N'hésitez pas à consulter un professionnel.";
+    }
+    resultContainer.innerHTML = `Score : ${score}. ${message}`;
+  }
+}
+
+submitButton.addEventListener("click", calculateScore);
+
+// Charger le quiz à l'ouverture de la page
+loadQuiz();
+
+    
+    </script>
+</body>
+</html>

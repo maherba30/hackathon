@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot pour étudiants</title>
+  <link rel="stylesheet" href="stylechat.css">
+</head>
+<body>
+  <div class="chatbot-container">
+    <div class="chat-header">
+      <h2>Chatbot Motivant</h2>
+      <p>Posez vos questions ou partagez vos pensées !</p>
+    </div>
+    <div class="chat-body" id="chatBody">
+      <!-- Les messages du chatbot apparaîtront ici -->
+    </div>
+    <div class="chat-footer">
+      <input type="text" id="userInput" placeholder="Écrivez votre message ici..." autocomplete="off">
+      <button id="sendButton">Envoyer</button>
+    </div>
+  </div>
+  <boutton onclick="location.href='page_acceille.html'">retour</boutton>
+
+  <script>
+    const chatBody = document.getElementById('chatBody');
+const userInput = document.getElementById('userInput');
+const sendButton = document.getElementById('sendButton');
+
+// Réponses prédéfinies pour le chatbot
+const botResponses = {
+  "bonjour": "Bonjour ! Comment puis-je vous aider aujourd'hui ? 😊",
+  "je me sens mal": "Je suis désolé d'entendre cela. Essayez de respirer profondément et rappelez-vous que vous n'êtes pas seul. ❤️",
+  "donne moi une citation": "Bien sûr : \"Même la nuit la plus sombre prendra fin, et le soleil se lèvera.\" - Victor Hugo",
+  "j'ai besoin d'aide": "Je suis là pour vous ! Si vous en ressentez le besoin, pensez à contacter un proche ou un professionnel.",
+  "merci": "Avec plaisir ! Prenez soin de vous. 🌟"
+};
+
+// Fonction pour ajouter un message dans le chat
+function addMessage(message, sender) {
+  const messageElement = document.createElement('div');
+  messageElement.classList.add('message', sender);
+  messageElement.textContent = message;
+  chatBody.appendChild(messageElement);
+  chatBody.scrollTop = chatBody.scrollHeight; // Défilement automatique
+}
+
+// Fonction pour gérer l'envoi des messages
+function handleSend() {
+  const userMessage = userInput.value.trim();
+  if (userMessage) {
+    addMessage(userMessage, 'user'); // Ajoute le message de l'utilisateur
+    userInput.value = '';
+
+    // Réponse du chatbot
+    const botMessage = botResponses[userMessage.toLowerCase()] || 
+      "Désolé, je ne comprends pas bien. Pouvez-vous reformuler ? 😊";
+    setTimeout(() => addMessage(botMessage, 'bot'), 500); // Réponse après un léger délai
+  }
+}
+
+// Événements sur le bouton et la touche "Entrée"
+sendButton.addEventListener('click', handleSend);
+userInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') handleSend();
+});
+
+  </script>
+</body>
+</html>
+

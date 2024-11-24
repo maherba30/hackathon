@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vidéos Motivantes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+    .header {
+      background: #5c67f2;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .videos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .video-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      text-align: center;
+    }
+    .video-card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .video-card h3 {
+      margin: 10px 0;
+      font-size: 1.2em;
+    }
+    .video-card p {
+      color: #555;
+      font-size: 0.9em;
+    }
+    .video-card button {
+      background: #5c67f2;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .video-card button:hover {
+      background: #4b55c1;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Vidéos Motivantes</h1>
+    <p>Une source d'inspiration pour les jours difficiles</p>
+  </div>
+  <div class="videos">
+    <div class="video-card">
+      <img src="video-thumbnail.jpg" alt="Vidéo 1">
+      <h3>Rester fort malgré les épreuves</h3>
+      <p>Apprenez comment rebondir après un échec.</p>
+      <button>Regarder</button>
+    </div>
+    <div class="video-card">
+      <img src="video-thumbnail2.jpg" alt="Vidéo 2">
+      <h3>Gérer l'anxiété</h3>
+      <p>Techniques simples pour calmer l'esprit.</p>
+      <button>Regarder</button>
+    </div>
+    <boutton onclick="location.href='page_acceille.html'">retour</boutton>
+
+    <script>
+        // Sélection des éléments HTML
+        const modal = document.getElementById('videoModal');
+        const modalContent = modal.querySelector('.modal-content iframe');
+        const closeModal = modal.querySelector('.modal-close');
+        const videoButtons = document.querySelectorAll('.video-card button');
+    
+        // Ajouter un événement pour chaque bouton "Regarder"
+        videoButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const videoUrl = button.getAttribute('data-video-url');
+            modalContent.src = videoUrl; // Charger la vidéo dans l'iframe
+            modal.style.display = 'flex'; // Afficher la fenêtre modale
+          });
+        });
+    
+        // Fermer la modale
+        closeModal.addEventListener('click', () => {
+          modal.style.display = 'none';
+          modalContent.src = ''; // Arrêter la vidéo
+        });
+    
+        // Fermer la modale en cliquant à l'extérieur
+        modal.addEventListener('click', (event) => {
+          if (event.target === modal) {
+            modal.style.display = 'none';
+            modalContent.src = ''; // Arrêter la vidéo
+          }
+        });
+      </script>
+  </div>
+ 
+</body>
+</html>

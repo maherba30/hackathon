@@ -1,0 +1,29 @@
+btn {
+    background-color: #4CAF50; /* Couleur de fond verte */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer; 1  }
+    /* Appliquer un style de base aux boutons */
+.btn {
+    padding: 10px 20px;
+    margin: 10px;  /* Ajouter un espace entre les boutons */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 250px;  /* Optionnel : définir une largeur uniforme pour les boutons */
+    text-align: center;
+  }
+  
+  /* Optionnel : Ajouter des effets de survol */
+  .btn:hover {
+    background-color: #45a049;
+  }

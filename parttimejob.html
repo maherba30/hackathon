@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>part time job</title>
+  <link rel="stylesheet" href="stylepart.css">
+</head>
+<body>
+  <!-- En-tête du site -->
+  <header>
+    <div class="container">
+      <h1>part time job</h1>
+      <p>Connectez-vous aux entreprises pour trouver des emplois à temps partiel !</p>
+    </div>
+  </header>
+
+  <!-- Section des offres d'emplois -->
+  <section id="offers">
+    <div class="container">
+      <h2>Offres d'Emplois à Temps Partiel</h2>
+      <div class="job-list">
+        <div class="job-item">
+          <h3>Assistant Marketing</h3>
+          <p>Entreprise : XYZ Corp</p>
+          <p>Description : Assister l’équipe marketing dans la gestion des campagnes publicitaires.</p>
+          <button onclick="window.location.href='apply.html'">Postuler</button>
+        </div>
+        <div class="job-item">
+          <h3>Serveur/Serveuse</h3>
+          <p>Entreprise : Café du Coin</p>
+          <p>Description : Accueillir les clients et servir les repas dans un café local.</p>
+          <button onclick="window.location.href='apply.html'">Postuler</button>
+        </div>
+        <!-- Ajouter d'autres offres ici -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulaire de recherche d'emplois -->
+  <section id="search">
+    <div class="container">
+      <h2>Rechercher un emploi</h2>
+      <form id="search-form">
+        <input type="text" id="job-search" placeholder="Recherchez un emploi...">
+        <button type="submit">Rechercher</button>
+      </form>
+    </div>
+  </section>
+  <boutton onclick="location.href='autres.html'">retour</boutton>
+
+  <!-- Pied de page -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Job Étudiant. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script >
+    // Fonction de recherche d'emploi (par exemple, recherche basée sur du texte)
+document.getElementById('search-form').addEventListener('submit', function(e) {
+  e.preventDefault(); // Empêche le rechargement de la page
+
+  const searchTerm = document.getElementById('job-search').value.toLowerCase();
+  
+  const jobItems = document.querySelectorAll('.job-item');
+  
+  jobItems.forEach(function(job) {
+    const jobTitle = job.querySelector('h3').textContent.toLowerCase();
+    if (jobTitle.includes(searchTerm)) {
+      job.style.display = 'block';  // Affiche les résultats qui correspondent
+    } else {
+      job.style.display = 'none';  // Cache les résultats qui ne correspondent pas
+    }
+  });
+});
+
+  </script>
+</body>
+</html>
